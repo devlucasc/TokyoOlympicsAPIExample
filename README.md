@@ -45,11 +45,17 @@ Após isso reiniciar o servidor MySQL:
 Conectar ao servidor MySQL e executar o script init.sql do diretório scripts para criar o banco de dados e a tabela necessária.
 
 Para compilar:
-```mvn clean package```
+```
+    mvn clean package
+```
+
 Para executar:
-```mvn spring-boot:run```
+```
+    mvn spring-boot:run
+```
 ------------------
 ##### Exemplo de utilização da API:
+
 Inserir nova competição:
 ```
 curl -H "Content-Type: application/json" -X POST --data-binary @- http://127.0.0.1:8080/api/tournament/ <<EOF
