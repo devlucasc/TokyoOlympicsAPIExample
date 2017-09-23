@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  contextPath: /
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  dbcfg:
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3306/tokyo_api
+    username: root
+    password: mysql
+    connectionInitSql: SELECT 1;
+    maximumPoolSize: 3
+    leakDetectionThreshold: 5000
+    autoCommit: true
+    readOnly: false
+    idleTimeout: 60000
+    maxLifetime: 120000
