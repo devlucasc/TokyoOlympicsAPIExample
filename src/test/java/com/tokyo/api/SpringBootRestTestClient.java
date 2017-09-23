@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 
-public class SpringBootRestTestClient {
+class SpringBootRestTestClient {
  
     private static final String REST_SERVICE_URI = "http://localhost:8080/api";
      

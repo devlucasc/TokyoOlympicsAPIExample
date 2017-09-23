@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tokyo.api</groupId>
-	<artifactId>TokyoOlympicAPI</artifactId>
+	<artifactId>TokyoOlympicsAPI</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>Tokyo Olympic API</name>
+	<name>Tokyo Olympics API</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

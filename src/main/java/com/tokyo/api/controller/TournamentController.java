@@ -63,10 +63,10 @@ public class TournamentController {
         } catch (CustomErrorType c) {
 		    return new ResponseEntity<>(new CustomError(c.getErrorMessage()), HttpStatus.CONFLICT);
         }
-		tournamentService.addTournament(tournament);
+		boolean created = tournamentService.addTournament(tournament);
 
 		HttpHeaders headers = new HttpHeaders();
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<String>(headers, (created ? HttpStatus.CREATED : HttpStatus.INTERNAL_SERVER_ERROR));
 	}
 
 }

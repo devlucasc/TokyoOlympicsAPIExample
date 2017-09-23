@@ -9,7 +9,7 @@ public class Application {
 
     /**
      * Main Method - Start Application
-     * @param args
+     * @param args main args
      */
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
