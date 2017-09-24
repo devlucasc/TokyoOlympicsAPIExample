@@ -24,22 +24,22 @@ public class TournamentController {
 
 	private final TournamentService tournamentService;
 
-    @Autowired
-    public TournamentController(TournamentService tournamentService) {
-        this.tournamentService = tournamentService;
-    }
+	@Autowired
+	public TournamentController(TournamentService tournamentService) {
+		this.tournamentService = tournamentService;
+	}
 
-    @RequestMapping(value = "/tournaments/", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<?> getAllTournaments() {
-        logger.info("Fetching All Tournaments");
-        List<Tournament> tournaments = tournamentService.listAllTournament();
-        if (tournaments != null && !tournaments.isEmpty()) {
-            tournaments.sort(Comparator.comparing(Tournament::getStartDate));
-            return new ResponseEntity<>(tournaments, HttpStatus.OK);
-        }
-        logger.error("Tournaments not found.");
-        return new ResponseEntity<>(new CustomError("Tournaments not found"), HttpStatus.NOT_FOUND);
-    }
+	@RequestMapping(value = "/tournaments/", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> getAllTournaments() {
+		logger.info("Fetching All Tournaments");
+        	List<Tournament> tournaments = tournamentService.listAllTournament();
+		if (tournaments != null && !tournaments.isEmpty()) {
+			tournaments.sort(Comparator.comparing(Tournament::getStartDate));
+			return new ResponseEntity<>(tournaments, HttpStatus.OK);
+		}
+		logger.error("Tournaments not found.");
+		return new ResponseEntity<>(new CustomError("Tournaments not found"), HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/tournaments/{modality}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> getTournamentByModality(@PathVariable("modality") String modality) {
@@ -57,14 +57,12 @@ public class TournamentController {
 	@RequestMapping(value = "/tournament/", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> createTournament(@RequestBody @Valid Tournament tournament) {
 		logger.info("Creating Tournament : {}", tournament);
-
 		try {
-            tournamentService.validateInputData(tournament);
-        } catch (CustomErrorType c) {
-		    return new ResponseEntity<>(new CustomError(c.getErrorMessage()), HttpStatus.CONFLICT);
-        }
+			tournamentService.validateInputData(tournament);
+		} catch (CustomErrorType c) {
+			return new ResponseEntity<>(new CustomError(c.getErrorMessage()), HttpStatus.CONFLICT);
+		}
 		boolean created = tournamentService.addTournament(tournament);
-
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<String>(headers, (created ? HttpStatus.CREATED : HttpStatus.INTERNAL_SERVER_ERROR));
 	}
