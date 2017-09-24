@@ -27,7 +27,7 @@ public class Tournament {
         }
     }
 
-	private long id;
+    private long id;
 
     @NotNull
 	private String modality;
@@ -61,7 +61,6 @@ public class Tournament {
 	}
 
     public Tournament(){
-        id=0;
     }
 
     public Tournament(long id, String modality, String location, Date startDate, Date endDate,

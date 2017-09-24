@@ -1,5 +1,6 @@
 package com.tokyo.api.util;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +19,17 @@ public class Utils {
                 || (start1.before(end2) && end1.after(end2))
                 || (start1.before(start2) && end1.after(end2))
                 || (start1.equals(start2) && end1.equals(end2)));
+    }
+
+    /**
+     * Convert sql timestamp to java Date
+     * @param t Timestamp to convert
+     * @return Date java object
+     */
+    public static Date convertTimestampToDate(Timestamp t) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(t.getTime());
+        return cal.getTime();
     }
 
     /**
